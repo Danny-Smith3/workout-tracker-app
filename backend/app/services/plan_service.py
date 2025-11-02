@@ -1,4 +1,4 @@
-from app.models.plan import Plan, BasePlan, PremadePlan
+from app.models.plan import Plan, BasePlan
 from app.db.supabase_client import supabase
 
 class PlanService:

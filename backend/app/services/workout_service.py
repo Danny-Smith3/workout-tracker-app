@@ -1,4 +1,4 @@
-from app.models.workout import Workout, BaseWorkout, PremadeWorkout
+from app.models.workout import Workout, BaseWorkout
 from app.db.supabase_client import supabase
 
 class WorkoutService:

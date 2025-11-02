@@ -1,4 +1,4 @@
-from app.models.exercise import Exercise, BaseExercise, PremadeExercise, BasePremadeExercise
+from app.models.exercise import Exercise, BaseExercise
 from app.db.supabase_client import supabase
 
 class ExerciseService:
