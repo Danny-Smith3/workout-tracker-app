@@ -37,10 +37,6 @@ def get_exercise(exercise_id: str):
     if not exercise:
         raise HTTPException(status_code=404, detail="Exercise not found")
     return exercise
-
-@router.get("/{muscle}", response_model=dict)
-def get_exercises_by_muscle(muscle: str):
-    return service.get_exercises_by_muscle(muscle)
 #endregion
 
 #region Creation Endpoints
@@ -55,7 +51,7 @@ def create_exercise(baseExercise: BaseExercise):
     
     exercise = service.create_exercise(baseExercise)
 
-    userService.add_exercise_to_user(user.email, exercise.id)
+    userService.add_exercise_to_user(user, exercise.id)
 
     return exercise
 #endregion
@@ -81,10 +77,12 @@ def delete_exercise(exercise_id: str, user_email: str):
     if exercise_id not in user.exercises:
         raise HTTPException(status_code=403, detail="Exercise does not belong to user")
     
-    service.delete_exercise(exercise_id)
+    delete_responnse = service.delete_exercise(exercise_id)
+    if not delete_responnse:
+        raise HTTPException(status_code=500, detail="Failed to delete exercise")
+
     userService.remove_exercise_from_user(user, exercise_id)
     workoutService.remove_exercise_from_workouts(exercise_id, user_email)
-    planService.remove_exercise_from_plans(exercise_id, user_email)
 
     return {"detail": "Exercise deleted successfully"}
 #endregion

@@ -40,10 +40,6 @@ def get_workout(workout_id: str):
     if not workout:
         raise HTTPException(status_code=404, detail="Workout not found")
     return workout
-
-@router.post("/by_muscles", response_model=dict)
-def get_workouts_by_muscles(request: WorkoutMuscleSearchRequest):
-    return exerciseService.get_workouts_by_muscles(request.muscles)
 #endregion
 
 #region Creation Endpoints

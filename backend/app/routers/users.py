@@ -2,6 +2,9 @@ from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 from typing import List
 from app.services.user_service import UserService
+from app.services.exercise_service import ExerciseService
+from app.services.workout_service import WorkoutService
+from app.services.plan_service import PlanService
 from app.models.user import BaseUser
 
 router = APIRouter(
@@ -10,6 +13,9 @@ router = APIRouter(
 )
 
 service = UserService()
+exerciseService = ExerciseService()
+workoutService = WorkoutService()
+planService = PlanService()
 
 #region Retrieval Endpoints
 @router.get("/{user_email}", response_model=dict)
@@ -50,5 +56,10 @@ def delete_user(user_email: str):
         raise HTTPException(status_code=404, detail="User not found")
     
     service.delete_user(user_email)
+
+    exerciseService.delete_exercises_by_user(user_email)
+    workoutService.delete_workouts_by_user(user_email)
+    planService.delete_plans_by_user(user_email)
+
     return {"detail": "User deleted successfully"}
 #endregion

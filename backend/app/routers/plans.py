@@ -71,7 +71,10 @@ def delete_plan(plan_id: str, user_email: str):
     if plan_id not in user.plans:
         raise HTTPException(status_code=403, detail="Plan does not belong to user")
     
-    service.delete_plan(plan_id)
+    delete_responnse = service.delete_plan(plan_id)
+    if not delete_responnse:
+        raise HTTPException(status_code=500, detail="Failed to delete plan")
+    
     userService.remove_plan_from_user(user, plan_id)
     
     return {"detail": "Plan deleted successfully"}
