@@ -1,0 +1,144 @@
+# ==============================================
+# FRONTEND (React + Vite + TypeScript)
+# ==============================================
+node_modules/
+dist/
+build/
+.cache/
+.vite/
+vite.config.ts.timestamp-*
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# ==============================================
+# BACKEND (Python + FastAPI)
+# ==============================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+develop-eggs/
+.installed.cfg
+*.manifest
+*.spec
+
+# Virtual environment directories
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# Local config / secrets
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Pip / Poetry / Conda
+Pipfile.lock
+poetry.lock
+*.sqlite3
+
+# FastAPI specific
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# ==============================================
+# DATABASE CLIENTS & CLOUD INTEGRATIONS
+# ==============================================
+# Supabase
+supabase/.env
+supabase/.env.*
+!supabase/.env.example
+supabase/.temp/
+supabase/.cache/
+supabase/.studio/
+
+# MongoDB (local data dumps / caches)
+mongo_dump/
+mongo_data/
+*.bson
+*.metadata.json
+
+# ==============================================
+# TESTING / COVERAGE
+# ==============================================
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+*.lcov
+
+# ==============================================
+# EDITORS / OS FILES
+# ==============================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.bak
+*.pid
+*.seed
+*.tgz
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# JetBrains
+.idea/
+
+# ==============================================
+# DOCKER / DEPLOYMENT
+# ==============================================
+docker-compose.override.yml
+*.env.docker
+*.env.production
+*.env.development
+*.env.local
+*.env.test.local
+*.env.production.local
+
+# Logs and runtime data
+logs/
+*.pid
+*.seed
+
+# ==============================================
+# TYPE CHECKING / BUILD METADATA
+# ==============================================
+*.tsbuildinfo
+*.mypy_cache/
+.pyre/
+.pytype/
+.dmypy.json
+
+# ==============================================
+# MISCELLANEOUS
+# ==============================================
+*.bak
+*.tmp
+*.log
+*.out
+*.err
