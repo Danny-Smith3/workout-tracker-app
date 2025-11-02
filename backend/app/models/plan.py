@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import List
 
 # ------------------------------
@@ -23,7 +23,7 @@ class PremadePlan(BasePremadePlan):
 # Base Plan (user plan, no id)
 # ------------------------------
 class BasePlan(BasePremadePlan):
-    # No additional fields for now
+    user_email: EmailStr
     pass
 
 # ------------------------------

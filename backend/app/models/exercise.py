@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import List, Optional
 
 # ------------------------------
@@ -18,6 +18,7 @@ class PremadeExercise(BasePremadeExercise):
 # Base Exercise (user exercise, no id)
 # ------------------------------
 class BaseExercise(BasePremadeExercise):
+    user_email: EmailStr
     weight: int          # smallint
     weight_unit_lbs: bool
     sets: int            # smallint

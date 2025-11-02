@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import List
 
 # ------------------------------
@@ -21,7 +21,7 @@ class PremadeWorkout(BasePremadeWorkout):
 # Base Workout (user workout, no id)
 # ------------------------------
 class BaseWorkout(BasePremadeWorkout):
-    # No additional fields for now
+    user_email: EmailStr
     pass
 
 # ------------------------------
