@@ -1,11 +1,11 @@
 import React from 'react';
 import './Login.css';
-//import { signInWithGoogle } from "../services/auth";
+import { signInWithGoogle } from "../services/auth";
 
 const Login: React.FC = () => {
   const handleGoogleSignIn = async () => {
     try {
-      //await signInWithGoogle();
+      await signInWithGoogle();
       // No further action needed — Supabase will redirect the user automatically.
     } catch (error) {
       console.error("Error during Google sign-in:", error);
