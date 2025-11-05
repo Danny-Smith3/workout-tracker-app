@@ -12,7 +12,7 @@ This project focuses on a web-first experience with long-term goals to support b
 **Backend:** Python + FastAPI  
 **Databases:** Supabase (PostgreSQL) for operational data, MongoDB for historical and analytical logs  
 **Frontend Deployment:** Vercel  
-**Backend Deployment:** Render (or alternative cloud host)  
+**Backend Deployment:** Render  
 **Auth:** Supabase Auth with Google OAuth  
 **Async Task Queue (planned):** Celery + Redis
 
@@ -94,5 +94,14 @@ npm run dev
 
 # Backend
 cd backend
+python3 -m venv .venv
+
+# Activate venv (macOS/Linux)
+source .venv/bin/activate
+# Activate venv (Windows PowerShell)
+.venv\Scripts\Activate
+
+pip install --upgrade pip
 pip install -r requirements.txt
-uvicorn main:app --reload
+
+uvicorn main:app --reload --port 4000
