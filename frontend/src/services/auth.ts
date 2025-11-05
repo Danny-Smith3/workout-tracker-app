@@ -1,5 +1,6 @@
-// src/auth.ts
+// src/services/auth.ts
 import { supabase } from "./supabase";
+import type { User } from "../types/user";
 
 /**
  * Start Google OAuth login flow.
@@ -51,6 +52,57 @@ export async function handleAuthCallback() {
 
     window.history.replaceState({}, "", url.pathname + url.search);
   }
+}
+
+export async function getOrCreateUserProfile(): Promise<User | null> {
+  const {
+    data: { user: authUser },
+    error: authError,
+  } = await supabase.auth.getUser();
+
+  if (authError || !authUser) {
+    console.error("Failed to get Supabase auth user:", authError?.message);
+    return null;
+  }
+
+  // Step 1: Try to fetch the user profile from your database
+  const { data: existingUser, error: fetchError } = await supabase
+    .from("users")
+    .select("*")
+    .eq("email", authUser.email)
+    .single();
+
+  if (fetchError && fetchError.code !== "PGRST116") { // PGRST116 = No rows found
+    console.error("Error fetching user profile:", fetchError.message);
+    return null;
+  }
+
+  if (existingUser) return existingUser as User;
+
+  // Step 2: Create a new user record
+  const newUser: User = {
+    email: authUser.email ?? "",
+    name: authUser.user_metadata?.full_name ?? "",
+    weight: 0,
+    weight_unit_lbs: true,
+    exercises: [],
+    workouts: [],
+    plans: [],
+    active_plan: null,
+  };
+
+  const { data: createdUser, error: createError } = await supabase
+    .from("users")
+    .insert([newUser])
+    .select()
+    .single();
+
+  if (createError) {
+    console.error("Error creating new user profile:", createError.message);
+    return null;
+  }
+
+  return createdUser as User;
 }
 
 /**

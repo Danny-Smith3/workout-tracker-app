@@ -14,5 +14,4 @@ class BaseUser(BaseModel):
 
 # Schema for reading from API (matches DB object)
 class User(BaseUser):
-    class Config:
-        orm_mode = True
+    pass

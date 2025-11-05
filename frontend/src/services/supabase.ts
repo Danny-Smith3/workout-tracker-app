@@ -1,3 +1,4 @@
+// src/services/supabase.ts
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -15,8 +16,9 @@ const getSupabaseClient = (): SupabaseClient => {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        storageKey: "workout-tracker-auth",
         detectSessionInUrl: true,
+        storage: sessionStorage,
+        storageKey: "workout-tracker-auth",
       },
     });
   }
