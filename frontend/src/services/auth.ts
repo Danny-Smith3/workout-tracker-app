@@ -29,9 +29,13 @@ export async function handleAuthCallback() {
   const url = new URL(window.location.href);
 
   // OAuth 2.0 code flow
-  if (url.searchParams.get("code")) {
-    const { error } = await supabase.auth.exchangeCodeForSession(window.location.href);
-    if (error) console.error("[auth] exchange error:", error.message);
+  const code = url.searchParams.get("code");
+  if (code) {
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) {
+      console.error("[auth] exchange error:", error.message);
+      throw error; // Throw so calling code can handle it
+    }
 
     // Clean up query params
     url.searchParams.delete("code");
@@ -47,9 +51,13 @@ export async function handleAuthCallback() {
 
     if (access_token) {
       const { error } = await supabase.auth.setSession({ access_token, refresh_token });
-      if (error) console.error("[auth] setSession error:", error.message);
+      if (error) {
+        console.error("[auth] setSession error:", error.message);
+        throw error;
+      }
     }
 
+    // Clean up hash
     window.history.replaceState({}, "", url.pathname + url.search);
   }
 }
