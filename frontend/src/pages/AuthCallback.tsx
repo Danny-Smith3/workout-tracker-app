@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { handleAuthCallback, getOrCreateUserProfile } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import type { User } from "../types/user";
+import "./AuthCallback.css";
 
 export default function AuthCallback() {
   const navigate = useNavigate();
@@ -32,9 +33,11 @@ export default function AuthCallback() {
   }, [navigate]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-50">
-      <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-      <p className="mt-6 text-gray-700 text-lg font-medium">Completing sign in...</p>
+    <div className="auth-callback-container">
+      <div className="auth-spinner-wrapper">
+        <div className="auth-spinner"></div>
+      </div>
+      <p className="auth-callback-text">Completing sign in...</p>
     </div>
   );
 }
