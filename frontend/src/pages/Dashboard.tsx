@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import type { User } from "../types/user";
 import { getOrCreateUserProfile } from "../services/auth";
+import "./Dashboard.css";
 
 interface DashboardProps {
   user?: User;
@@ -27,20 +28,22 @@ const Dashboard: React.FC<DashboardProps> = ({ user: initialUser }) => {
   }, [location.state]);
 
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+    <div className="dashboard-container">
+      <div className="dashboard-card">
+        <h1 className="dashboard-title">Dashboard</h1>
 
-      {user ? (
-        <p className="text-lg">
-          Welcome back, <span className="font-semibold">{user.email}</span>!
+        {user ? (
+          <p className="dashboard-welcome">
+            Welcome back, <span className="user-email">{user.email}</span>!
+          </p>
+        ) : (
+          <p className="dashboard-loading">Loading your profile...</p>
+        )}
+
+        <p className="dashboard-description">
+          This is your main dashboard where you will track workouts and plans.
         </p>
-      ) : (
-        <p className="text-gray-600">Loading your profile...</p>
-      )}
-
-      <p className="mt-4 text-gray-700">
-        This is your main dashboard where you will track workouts and plans.
-      </p>
+      </div>
     </div>
   );
 };

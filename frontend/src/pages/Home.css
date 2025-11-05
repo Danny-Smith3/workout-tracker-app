@@ -1,0 +1,70 @@
+/* src/pages/Home.css */
+@import "../styles/globals.css";
+
+.home-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-grey-darker);
+  color: var(--color-off-white);
+}
+
+.spinner-wrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.spinner-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid var(--color-primary);
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-inner {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 4px solid var(--color-primary-dark);
+  border-top-color: transparent;
+  animation: spin 1.5s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-off-white);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.loading-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-grey);
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .loading-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .spinner-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+}
