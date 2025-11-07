@@ -7,7 +7,7 @@ interface PlanPageProps {
   user: User;
 }
 
-const PlanPage: React.FC<PlanPageProps> = ({ user }) => {
+const PlanPage: React.FC<PlanPageProps> = ({ /* user */ }) => {
   return (
     <div className="page-container">
       <div className="page-card">
