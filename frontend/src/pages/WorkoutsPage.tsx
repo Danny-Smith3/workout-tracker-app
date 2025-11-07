@@ -7,7 +7,7 @@ interface WorkoutsPageProps {
   user: User;
 }
 
-const WorkoutsPage: React.FC<WorkoutsPageProps> = ({ user }) => {
+const WorkoutsPage: React.FC<WorkoutsPageProps> = ({ /* user */ }) => {
   return (
     <div className="page-container">
       <div className="page-card">
