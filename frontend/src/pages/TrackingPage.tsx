@@ -15,7 +15,7 @@ interface TrackingPageProps {
   user: User;
 }
 
-const TrackingPage: React.FC<TrackingPageProps> = ({ user }) => {
+const TrackingPage: React.FC<TrackingPageProps> = ({ /* user */ }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [showAddMenu, setShowAddMenu] = useState(false);
   
@@ -50,7 +50,7 @@ const TrackingPage: React.FC<TrackingPageProps> = ({ user }) => {
     // TODO: Implement plan change functionality
   };
 
-  const handleEdit = (id: string) => {
+  const handleEdit = (/*id: string*/) => {
     // TODO: Implement edit functionality
   };
 
@@ -121,7 +121,7 @@ const TrackingPage: React.FC<TrackingPageProps> = ({ user }) => {
                   </div>
                   <button 
                     className="btn-edit"
-                    onClick={() => handleEdit(exercise.id)}
+                    onClick={() => handleEdit(/* exercise.id */)}
                     aria-label="Edit exercise"
                   >
                     Edit
