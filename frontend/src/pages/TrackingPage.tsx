@@ -121,7 +121,7 @@ const TrackingPage: React.FC<TrackingPageProps> = ({ /* user */ }) => {
                   </div>
                   <button 
                     className="btn-edit"
-                    onClick={() => handleEdit(exercise.id)}
+                    onClick={() => handleEdit(/* exercise.id */)}
                     aria-label="Edit exercise"
                   >
                     Edit
