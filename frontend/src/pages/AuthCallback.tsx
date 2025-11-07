@@ -18,7 +18,7 @@ export default function AuthCallback() {
         const user: User | null = await getOrCreateUserProfile();
 
         if (user) {
-          navigate("/dashboard", { replace: true, state: { user } });
+          navigate("/app/tracking", { replace: true, state: { user } });
         } else {
           console.error("Failed to fetch or create user profile");
           navigate("/login", { replace: true });

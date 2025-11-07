@@ -1,16 +1,17 @@
-/* src/pages/Dashboard.css */
+/* src/pages/SharedPages.css */
 @import "../styles/globals.css";
 
-.dashboard-container {
+.page-container {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   min-height: 100vh;
   padding: var(--spacing-3xl) var(--spacing-lg);
+  padding-bottom: 100px; /* Space for bottom nav */
   background-color: var(--color-grey-darker);
 }
 
-.dashboard-card {
+.page-card {
   background-color: var(--color-grey-dark);
   border-radius: var(--border-radius-xl);
   border: 1px solid var(--color-grey);
@@ -21,56 +22,37 @@
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }
 
-.dashboard-card:hover {
+.page-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
-.dashboard-title {
+.page-title {
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-off-white);
   margin-bottom: var(--spacing-2xl);
 }
 
-.dashboard-welcome {
-  font-size: var(--font-size-lg);
-  color: var(--color-off-white);
-  margin-bottom: var(--spacing-lg);
-}
-
-.user-email {
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-primary);
-}
-
-.dashboard-loading {
-  font-size: var(--font-size-base);
-  color: var(--color-grey);
-  margin-bottom: var(--spacing-lg);
-}
-
-.dashboard-description {
+.page-description {
   font-size: var(--font-size-base);
   color: var(--color-grey);
   line-height: var(--line-height-relaxed);
+  margin: 0;
 }
 
 /* Responsive Design */
 @media (max-width: 640px) {
-  .dashboard-container {
+  .page-container {
     padding: var(--spacing-xl) var(--spacing-md);
+    padding-bottom: 90px;
   }
   
-  .dashboard-card {
+  .page-card {
     padding: var(--spacing-2xl);
   }
   
-  .dashboard-title {
+  .page-title {
     font-size: var(--font-size-3xl);
-  }
-  
-  .dashboard-welcome {
-    font-size: var(--font-size-base);
   }
 }

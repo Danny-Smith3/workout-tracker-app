@@ -17,14 +17,14 @@ const Home: React.FC = () => {
         const navStateUser = (location.state as { user?: User })?.user;
 
         if (navStateUser) {
-          navigate("/dashboard", { replace: true, state: { user: navStateUser } });
+          navigate("/app/tracking", { replace: true, state: { user: navStateUser } });
           return;
         }
 
         // Otherwise fetch or create user from DB
         const user: User | null = await getOrCreateUserProfile();
         if (user) {
-          navigate("/dashboard", { replace: true, state: { user } });
+          navigate("/app/tracking", { replace: true, state: { user } });
         } else {
           navigate("/login", { replace: true });
         }
