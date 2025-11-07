@@ -7,7 +7,7 @@ interface SettingsPageProps {
   user: User;
 }
 
-const SettingsPage: React.FC<SettingsPageProps> = ({ user }) => {
+const SettingsPage: React.FC<SettingsPageProps> = ({ /* user */ }) => {
   return (
     <div className="page-container">
       <div className="page-card">
